@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Reciclagem já!</title>
+  <script src="https://cdn.jsdelivr.net/npm/pace.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-defalt.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #45be95, #1ddd7a, #679a46, #395845);
+      color: #FFFFFF;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .container h1 {
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #444444;
+      color: #FFFFFF;
+    }
+    
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #1ECA9D;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #17A083;
+    }
+    
+    .error-image {
+      display: none;
+      max-width: 100px;
+      margin: 0 auto;
+    }
+    
+    .error-message {
+      text-align: center;
+      color: #FF0000;
+      display: none;
+    }
+    
+    .show-error .error-image {
+      display: block;
+    }
+    
+    .show-error .error-message {
+      display: block;
+    }
+    
+    #login-toggle {
+      background-color: #00BFFF;
+    }
+    
+    #register-toggle {
+      background-color: #00BFFF; 
+    }
+    
+   
+    #toggle-form {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #google-login, #facebook-login {
+      background-color: #4285F4;
+      border: none;
+      color: #FFFFFF;
+      padding: 10px 15px;
+      cursor: pointer;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    #facebook-login {
+      background-color: #1877F2;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <h1>Login ou Cadastro</h1>
+    <form method="POST" action="p1.php" id="login-form">
+      <div class="form-group">
+        <label for="login-username">Nome de usuário</label>
+        <input type="text" id="login-username" name="login-username" placeholder="Digite seu nome de usuário" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Senha</label>
+        <input type="password" id="login-password" name="login-password" placeholder="Digite sua senha" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Entrar">
+      </div>
+      <div class="error-message">Erro ao fazer login. Verifique suas credenciais.</div>
+      <img class="error-image" src=":(" alt="Erro">
+    </form>
+    
+    <form id="register-form" style="display: none;">
+      <div class="form-group">
+        <label for="register-name">Nome</label>
+        <input type="text" id="register-name" name="register-name" placeholder="Digite seu nome" required>
+      </div>
+      <div class="form-group">
+        <label for="register-email">Email</label>
+        <input type="email" id="register-email" name="register-email" placeholder="Digite seu email" required>
+      </div>
+      <div class="form-group">
+        <label for="register-phone">Telefone</label>
+        <input type="tel" id="register-phone" name="register-phone" placeholder="Digite seu telefone" required>
+      </div>
+      <div class="form-group">
+        <label for="register-username">Nome de usuário</label>
+        <input type="text" id="register-username" name="register-username" placeholder="Escolha um nome de usuário" required>
+      </div>
+      <div class="form-group">
+        <label for="register-password">Senha</label>
+        <input type="password" id="register-password" name="register-password" placeholder="Escolha uma senha" required>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Cadastrar">
+      </div>
+    </form>
+    
+    <div id="toggle-form">
+      <button id="login-toggle">Login</button>
+      <button id="register-toggle">Cadastro</button>
+    </div>
+    
+    <div id="social-login">
+      <button id="google-login">Entrar com Google</button>
+      <button id="facebook-login">Entrar com Facebook</button>
+    </div>
+  </div>
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
+    const loginToggle = document.getElementById("login-toggle");
+    const registerToggle = document.getElementById("register-toggle");
+    const googleLoginButton = document.getElementById("google-login");
+    const facebookLoginButton = document.getElementById("facebook-login");
+
+    loginToggle.addEventListener("click", () => {
+      loginForm.style.display = "block";
+      registerForm.style.display = "none";
+    });
+
+    registerToggle.addEventListener("click", () => {
+      loginForm.style.display = "none";
+      registerForm.style.display = "block";
+    });
+
+    googleLoginButton.addEventListener("click", () => {
+      // Lidar com o processo de login com o Google aqui
+      console.log("Login com Google");
+    });
+
+    facebookLoginButton.addEventListener("click", () => {
+      // Lidar com o processo de login com o Facebook aqui
+      console.log("Login com Facebook");
+    });
+
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const username = event.target.querySelector("#login-username").value;
+      const password = event.target.querySelector("#login-password").value;
+
+      if (username === "user" && password === "password") {
+        loginForm.classList.remove("show-error");
+        console.log("Login bem-sucedido!");
+        window.location.href = "rec.html";
+      } else {
+        loginForm.classList.add("show-error");
+      }
+    });
+  </script>
+</body>
+</html>

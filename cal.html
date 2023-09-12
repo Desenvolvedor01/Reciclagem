@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+	body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #45be95, #1ddd7a, #679a46, #395845);
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator {
+    margin-top: 100px;
+    background-color: #008080;
+    border-radius: 10px;
+    padding: 20px
+}
+
+     .container {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(135deg, #395845 10%, #15c28c 90%);
+      color: #FFF;
+      border-bottom: double greenyellow;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li:hover {
+      padding: 10px;
+      border-bottom: double greenyellow;
+      background: #1ddd7a;
+
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #FFF;
+      display: block;
+      border-bottom: dotted greenyellow;
+    }
+
+      header h1 {
+            font-size: 36px;
+        }
+
+        main button {
+            background-color: #1ddd7a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        main button:hover {
+            background-color: #15c28c;
+        }
+
+        .calculator p {
+            margin-bottom: 15px;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: red;
+        }
+</style>
+</head>
+<body>
+	<div class="container">
+		<nav class="sidebar">
+			<ul class="menu">
+		<li><a href="info.html">Informações sobre Reciclage</a></li>
+        <p>
+        <li><a href="rec.html">Quiz</a></li>
+        <li><a href="index.html">Retornar a tela de loguin</a></li>
+				
+			</ul>
+		</nav>
+	</div>
+<main>
+    <center><div class="calculator">
+        <p>Utilize a calculadora abaixo para verificar o impacto positivo da reciclagem:</p>
+        <label for="input-weight">Peso do material (em kg):</label>
+        <input type="number" id="input-weight">
+        <button onclick="calculate()">Calcular</button>
+        <div id="result"></div>
+    </div>
+</main></center>
+ <script>
+    function calculate() {
+      var weight = document.getElementById("input-weight").value;
+      var result = weight * 0.5; 
+      
+      document.getElementById("result").innerText = "A reciclagem desse material evitou a emissão de " + result + " kg de CO2.";
+    }
+  </script>
+
+</body>
+</html>

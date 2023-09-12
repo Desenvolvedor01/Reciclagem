@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reciclagem - Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right 135deg, #67C3EB 10%, #5A86D8 90%);
+      background-color: linear-gradient(to right #45be95, #1ddd7a, #679a46, #395845);
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(135deg, #395845 10%, #15c28c 90%);
+      color: #FFF;
+      border-bottom: double greenyellow;
+    }
+
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li:hover {
+      padding: 10px;
+      border-bottom: double greenyellow;
+      background: #1ddd7a;
+
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #FFF;
+      display: block;
+      border-bottom: dotted greenyellow;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .quiz {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #61bb52;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .quiz h2 {
+      margin-top: 0;
+    }
+
+    .question {
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #1ECA9D;
+      border: none;
+      color: #FFFFFF;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #quiz-result {
+      margin-top: 20px;
+    }
+
+    .information {
+      padding: 20px;
+      background-color: #1ddd7a;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+  </style>
+</head>
+<body bgcolor="#1ddd7a">
+  <div class="container">
+    <nav class="sidebar">
+      <ul class="menu">
+        <li><a href="info.html">Informações sobre Reciclage</a></li>
+        <p>
+        <li><a href="cal.html">Calculadora Ambiental</a></li>
+        <li><a href="index.html">Retornar a tela de loguin</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <section class="quiz">
+        <h2>Quiz sobre Reciclagem</h2>
+        <form id="quiz-form">
+          <div class="question">
+            <p>1. Qual dos seguintes materiais não é geralmente reciclável?</p>
+            <label><input type="radio" name="q1" value="a"> ferro</label>
+            <label><input type="radio" name="q1" value="b"> cerâmica</label>
+            <label><input type="radio" name="q1" value="c"> Papelão</label>
+          </div>
+          <div class="question">
+            <p>2. Qual é a cor padrão da lata de lixo de recicláveis?</p>
+            <label><input type="radio" name="q2" value="a"> Azul</label>
+            <label><input type="radio" name="q2" value="b"> roxa</label>
+            <label><input type="radio" name="q2" value="c"> cinza</label>
+          </div>
+          <div class="question">
+            <p>3. Qual é o principal benefício da reciclagem?</p>
+            <label><input type="radio" name="q3" value="a"> Redução de poluição</label>
+            <label><input type="radio" name="q3" value="b"> Economia de dinheiro</label>
+            <label><input type="radio" name="q3" value="c"> Aumento da produção</label>
+          </div>
+          
+          <button type="submit">Ver Resultado</button>
+        </form>
+        <div id="quiz-result"></div>
+      </section>
+      <div class="information">
+        <h2>Pra que essa página????</h2>
+        <p>Esta página vai testar seus conhecimentos sobre a reciclagem, e com o video abaixo trazer informações da importância dela.</p>
+      </div>
+      <iframe src="https://www.youtube.com/embed/KWIEnztOXJU?si=0dbdkOELc2uBpdsi" title="YouTube video player" allowfullscreen></iframe>
+    </main>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const quizForm = document.getElementById("quiz-form");
+      const quizResult = document.getElementById("quiz-result");
+
+      quizForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const answers = {
+          q1: quizForm.q1.value,
+          q2: quizForm.q2.value,
+          q3: quizForm.q3.value
+          
+        };
+
+        const score = calculateScore(answers);
+        const resultText = getResultText(score);
+
+        quizResult.innerHTML = `<p>Você acertou ${score} de ${Object.keys(answers).length} perguntas.</p>${resultText}`;
+      });
+
+      function calculateScore(answers) {
+        let score = 0;
+
+        if (answers.q1 === "b") score++;
+        if (answers.q2 === "a") score++;
+        if (answers.q3 === "a") score++;
+        
+
+        return score;
+      }
+
+      function getResultText(score) {
+        if (score === 3) {
+          return "<p>Parabéns! Você é um especialista em reciclagem!</p>";
+        } else if (score >= 1) {
+          return "<p>Ótimo! Você conhece um pouco sobre reciclagem.</p>";
+        } else {
+          return "<p>Que pena! Tente aprender mais sobre reciclagem.</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
